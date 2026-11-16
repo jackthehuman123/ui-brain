@@ -73,6 +73,18 @@ Add `@~/vaults/ui-brain/_index.md` to a project's `CLAUDE.md` or to `~/.claude/C
 - **Don't** use `--add-dir` on the vault together with `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`. That loads the vault's *maintenance* `CLAUDE.md` into your project session.
 - **Windows:** git checks symlinks out as plain text unless `core.symlinks` is enabled. If `SKILL.md` breaks, replace it with a copy of `_index.md`.
 
+## Terms of use (personal subscription)
+
+This vault uses only built-in Claude Code features: skills, subagents, `CLAUDE.md`, and `claude -p` for headless checks. It does **not** use the Claude Agent SDK and contains no code that calls Claude. Running it in your own Claude Code session on your own Pro/Max account is ordinary individual use under the Consumer Terms.
+
+Stay within that:
+- Use it yourself, in your own Claude Code sessions.
+- Don't wrap it in an app or service that lets **other people** use your claude.ai login. Anthropic doesn't allow third parties to offer claude.ai login or route requests through Free/Pro/Max credentials, and that includes Agent SDK apps.
+- Plan limits assume ordinary individual use. Avoid unattended high-volume loops (e.g. scheduled bulk `claude -p` runs).
+- If you later build an Agent SDK app around this knowledge, authenticate it with an **API key** from the Claude Console. The Agent SDK falls under the Commercial Terms.
+
+Sources: [Claude Code legal and compliance](https://code.claude.com/docs/en/legal-and-compliance), [Agent SDK overview: authentication note](https://code.claude.com/docs/en/agent-sdk/overview).
+
 ## Update
 
 ```bash
