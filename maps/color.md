@@ -9,3 +9,10 @@ Load with [[checklists/color|the Color checklist]]. Open only the notes the task
 
 ## Concepts
 - [[oklch]]
+- [[oklch-palettes]]
+- [[oklch-gradients]]
+- [[alpha-borders]]
+- [[dark-mode-depth]]
+- [[multiply-blending]]
+
+Also: [[contrast-ratio]] (home: accessibility)
