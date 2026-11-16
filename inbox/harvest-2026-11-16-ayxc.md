@@ -18,3 +18,6 @@ The project-type → screen → component path produced a complete page plan. Co
 - components: `product-card`, `navigation-bar`, `mobile-drawer`, `segmented-control`
 - concepts: `font-loading` (CLS from web fonts: `size-adjust`/fallback metrics, `font-display`), `easing`, `animation-duration`
 - `review-tooling` (already a candidate): add the about:blank readiness trap, the `fonts.ready` hang under virtual time, and smooth-scroll vs scripted screenshots
+
+## Status 2026-11-16
+Rule changes applied during Phase 2: oklch (gamut re-clamp), tracking (caps on letter strings; large-caps range unverified), interruptible-animation (all state properties transition; WAAPI test), contrast-ratio + screens/homepage (worst-pixel method). New notes written: dark-mode-depth, touch-target, tabular-numbers, concentric-radius, alpha-borders, matched-icon-weight, easing, animation-duration, reduced-motion, font-loading. Still open: `review-tooling` note and the component notes (product-card, navigation-bar, mobile-drawer, segmented-control).

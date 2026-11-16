@@ -12,11 +12,11 @@ sources:
 
 **Covers:** brand and retail storefronts on the web (DTC brands, catalogs, single-product shops). For native shopping apps, also load the iOS/Android platform files.
 
-**Platforms:** `platforms/web.md` (not yet written)
+**Platforms:** [[platforms/web]]
 
 **Typical screens:** [[screens/homepage]] · category listing · product detail · cart · checkout · account / order status · search results (screens other than homepage are not yet written)
 
-**Core components:** [[components/form]] · product card · navigation bar / mega-menu · filter and sort · image gallery · size selector · button · toast (only form is written)
+**Core components:** [[components/form]] · product card · navigation bar / mega-menu · filter and sort · image gallery · size selector · button · toast. Written: [[components/form]], [[components/combobox]] (search)
 
 **Priority concepts:**
 - [[layout-shift]]: images and prices loading late are the main source of CLS on product grids

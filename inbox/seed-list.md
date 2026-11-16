@@ -24,3 +24,13 @@ Proposed placement:
 - **Doherty threshold** → interaction-and-state (400 ms response target; relates to optimistic update)
 - **Hick's, Miller's, Jakob's, Postel's laws and frequency of use** → either interaction-and-state, or a new `ux-laws` domain (decision for the owner)
 - Caution: Miller's law (7±2) is widely misapplied to menu length. The note must say what it does *not* justify.
+
+## Status 2026-11-16: Phase 2 complete
+All seed terms are written as concept notes, except:
+- **combobox** → `components/combobox.md` (component layer)
+- **bigger hit areas** → merged into `fitts-law`
+- **exaggerated feedback** → merged into `squash-and-stretch`
+- **slow in and slow out** → `easing` · **snappy timing** → `animation-duration` · **staging the focus** → `staging` · **moving in arcs** → `arcs`
+- **solid drawing in 3D** → `consistent-light-source` · **overall appeal** → `aesthetic-usability-effect`
+- **OKLCH palettes / gradients** → separate notes `oklch-palettes`, `oklch-gradients`
+- Added from the harvests: `contrast-ratio`, `font-loading`, `reduced-motion`

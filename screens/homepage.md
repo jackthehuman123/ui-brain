@@ -27,7 +27,7 @@ sources:
 
 Order after section 1: **unverified**, common practice. Test it against your analytics.
 
-**Components:** [[components/form]] (newsletter) · card · navigation bar · button (not yet written)
+**Components:** [[components/form]] (newsletter) · card · navigation bar · button (component notes planned; see `maps/components.md`)
 
 **Rules:**
 - Spend the best content on the first two screens, because attention falls sharply after the fold. *(NN/g)*
@@ -52,7 +52,7 @@ Order after section 1: **unverified**, common practice. Test it against your ana
 - [ ] Exactly one primary CTA in the first screen, on desktop and on a 390px-wide viewport
 - [ ] No auto-advancing carousel
 - [ ] Hero image not lazy-loaded; dimensions or aspect-ratio set
-- [ ] Text on imagery ≥ 4.5:1 (≥ 3:1 for large text) at its worst point
+- [ ] Text on imagery ≥ 4.5:1 (≥ 3:1 for large text) at its worst rendered pixel. A token check isn't enough: rasterize the hero art plus scrim and sample under each line box ([[contrast-ratio]])
 - [ ] LCP ≤ 2.5 s and CLS ≤ 0.1 in a throttled mobile run
 
 **Related:** [[project-types/ecommerce-site]] · [[layout-shift]] · [[progressive-disclosure]] · [[line-length]]

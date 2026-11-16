@@ -15,3 +15,6 @@ Proposals only. Concept notes are unchanged until the owner approves.
 - `reduced-motion`: the `prefers-reduced-motion` policy (what to keep, what to drop).
 - `review-tooling`: headless Chrome's minimum window is ~500px (use an iframe for narrow viewports). Force the color scheme with a stylesheet edit, since `--force-dark-mode` didn't apply in headless. Contrast and gamut script; interrupt-test harness.
 - Already on the seed list and needed in this test: `dark-mode-depth` (the selected thumb looked sunken in dark mode), `touch-target`, `tabular-numbers`, `concentric-radius`, `alpha-borders`, `matched-icon-weight`, plus `easing`/`animation-duration` from the animation-principles additions.
+
+## Status 2026-11-16
+Rule changes applied during Phase 2: oklch (gamut re-clamp), tracking (caps on letter strings; large-caps range unverified), interruptible-animation (all state properties transition; WAAPI test), contrast-ratio + screens/homepage (worst-pixel method). New notes written: dark-mode-depth, touch-target, tabular-numbers, concentric-radius, alpha-borders, matched-icon-weight, easing, animation-duration, reduced-motion, font-loading. Still open: `review-tooling` note and the component notes (product-card, navigation-bar, mobile-drawer, segmented-control).
