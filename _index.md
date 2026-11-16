@@ -1,29 +1,30 @@
 ---
-name: ui-brain
-description: UI design rules, concrete values, failure patterns and review checklists for web, iOS, Android, desktop and game UI (Roblox, Unity), organized by project type, screen, component and design concept. Use when designing, refining or reviewing any user interface or UI code, such as homepages, forms, cards, menus, dashboards, game HUDs, typography, color, spacing, motion, accessibility, safe areas and touch targets.
 type: index
+description: "Entry point: search-first lookup procedure for the ui-brain vault"
 ---
-# ui-brain: UI design knowledge for design subagents
+# ui-brain
 
-These notes record rules, thresholds, values and failure patterns that improve on model defaults; nothing here is a definition or tutorial.
+Rules, values, failure patterns and review checks that improve UI output beyond model defaults, for web, iOS, Android, desktop and Roblox/Unity game UI.
 
-## For agents: how to load (narrow → specific, stop when you have enough)
-1. **Project type** → `project-types/<type>.md`: platforms, typical screens, core components, priority concepts, quality bars.
-2. **Screen** you're building → `screens/<screen>.md`: job, section order, rules, review checks.
-3. **Components** on it → `components/<component>.md`: anatomy, states, rules, review checks.
-4. **Concepts**: open only the `[[links]]` you need for reasoning or values. For a pure style pass (e.g. "fix the typography"), go straight to `maps/<domain>.md` + `checklists/<domain>.md`.
-5. **Platform constants** → `platforms/<platform>.md`.
-6. **Never load the whole vault.** Notes are `status: draft`. Treat **unverified** values as estimates and say so.
-7. Link resolution: paths are relative to this file's directory (`${CLAUDE_SKILL_DIR}` as a skill). `[[name]]` = `concepts/name.md`. A prefixed link (`[[components/form]]`, `[[maps/color]]`) = that path + `.md`.
-8. Finish by listing missing or wrong knowledge under **Vault gaps** (for `harvest`).
+## Lookup procedure (agents must follow)
+1. **Scan summaries, not files:** `~/.claude/skills/ui-brain/scripts/find.sh [keyword…]` prints `path: description` for each note. Without the skill: `rg "^description:" ~/Documents/vaults/ui-brain/{concepts,components,screens,project-types}`
+2. **Whole-domain review:** open `maps/<domain>.md` + `checklists/<domain>.md` instead (see table).
+3. **Open at most 5 notes.** Use offset/limit when you only need one section (**Values:**, **Detect in review:**).
+4. **Never** read the whole vault or glob-read a folder.
 
-## Where things are
-| Layer | Index | Use it for |
-|---|---|---|
-| Project types | [[maps/project-types]] | "I'm building a storefront / SaaS app / iOS app / Roblox game" |
-| Screens | [[maps/screens]] | homepage, checkout, settings, HUD… |
-| Components | [[maps/components]] | form, card, menu, combobox… |
-| Concepts by domain | [[maps/typography]] · [[maps/color]] · [[maps/layout-and-spacing]] · [[maps/motion]] · [[maps/interaction-and-state]] · [[maps/iconography-and-visual-detail]] · [[maps/platform-and-environment]] · [[maps/accessibility]] | the reasoning and values behind rules |
-| Review passes | `checklists/<domain>.md` | yes/no audits |
+Folders: `project-types/` (routing per product) → `screens/` → `components/` → `concepts/` (atomic rules + values). Constants live in `platforms/`. `[[name]]` = `concepts/name.md`; `[[components/form]]` = that path + `.md`.
 
-Humans: maintenance rules are in `CLAUDE.md`; sources are ranked in [[sources]]; `inbox/` holds candidates (agents ignore it).
+## Task → map + checklist
+| Task | Load |
+|---|---|
+| Type scale, fonts, numerals, text rendering | `maps/typography.md` + `checklists/typography.md` |
+| Palette, theming, dark mode, gradients, borders | `maps/color.md` + `checklists/color.md` |
+| Grid, spacing, alignment, radii, layout stability | `maps/layout-and-spacing.md` + `checklists/layout-and-spacing.md` |
+| Transitions, gestures, micro-interactions | `maps/motion.md` + `checklists/motion.md` |
+| Feedback, loading/empty/error states, disclosure | `maps/interaction-and-state.md` + `checklists/interaction-and-state.md` |
+| Icons, edges, blur, shadows, polish | `maps/iconography-and-visual-detail.md` + `checklists/iconography-and-visual-detail.md` |
+| Notches, viewports, input, Roblox/Unity screens | `maps/platform-and-environment.md` + `checklists/platform-and-environment.md` + `platforms/` |
+| Accessibility audit | `maps/accessibility.md` + `checklists/accessibility.md` |
+| Build a screen or product | `maps/project-types.md` → `maps/screens.md` → `maps/components.md` |
+
+Notes are `status: draft`; treat **unverified** values as estimates. End with **Vault gaps** for `harvest`. Maintenance: `CLAUDE.md`. Sources: `sources.md`. Agents ignore `inbox/`.

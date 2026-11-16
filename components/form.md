@@ -1,5 +1,6 @@
 ---
 type: component
+description: "Visible labels, validate on blur, clear errors on fix, autocomplete tokens, never block paste, ≥16px inputs on iOS web"
 aliases: [forms, web form, input form, sign-up form, checkout form, form validation]
 platforms: [all]
 status: draft

@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Grids, spacing, alignment, optical center, concentric radii, layout shift, safe areas in layout"
 domain: layout-and-spacing
 ---
 # Layout and spacing

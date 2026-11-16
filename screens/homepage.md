@@ -1,5 +1,6 @@
 ---
 type: screen
+description: "First screen says what's sold, to whom, one primary CTA; no carousel; hero not lazy; text passes worst-pixel contrast"
 aliases: [home page, landing page, front page, hero]
 project_types: [ecommerce-site, marketing-site]
 platforms: [web]

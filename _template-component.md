@@ -1,5 +1,6 @@
 ---
 type: component
+description: "<one line, ≤120 chars: the component's key rules>"
 aliases: []
 platforms: [all]
 status: draft

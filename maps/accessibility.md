@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Contrast, text spacing, touch targets, focus, reduced motion, screen-reader semantics"
 domain: accessibility
 ---
 # Accessibility

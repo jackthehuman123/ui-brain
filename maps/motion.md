@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Transitions, springs, interruption, stagger, origin-aware and shared-element motion, easing, durations"
 domain: motion
 ---
 # Motion

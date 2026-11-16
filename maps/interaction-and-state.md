@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Feedback, affordance, optimistic updates, progressive disclosure, loading/empty/error states, UX laws"
 domain: interaction-and-state
 ---
 # Interaction and state

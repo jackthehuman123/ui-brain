@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Safe areas, dynamic viewport, input methods, per-platform constants, Roblox/Unity screen setup"
 domain: platform-and-environment
 ---
 # Platform and environment

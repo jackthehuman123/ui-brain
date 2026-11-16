@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Index of component notes (form, card, menu…): anatomy, states, rules, review checks"
 domain: components
 ---
 # Components

@@ -1,77 +1,50 @@
 # ui-brain
 
-An Obsidian vault of UI design knowledge that Claude Code agents load while designing, refining or reviewing interfaces on web, iOS, Android, desktop, Roblox and Unity. It holds concrete rules, values, failure patterns and review checklists, not tutorials.
+An Obsidian vault of UI design knowledge that Claude Code agents use while designing, refining or reviewing interfaces on web, iOS, Android, desktop, Roblox and Unity. It holds concrete rules, values, failure patterns and review checklists, not tutorials.
 
-The vault root is also a **Claude Code skill**: `SKILL.md` (a symlink to `_index.md`) gives the skill's name and description. Claude sees only that description until a design task comes up, then reads the index, and from there only the map, checklist and notes the task needs.
+**Cheap to load (progressive disclosure):** a small personal skill (`~/.claude/skills/ui-brain/`) puts only its name and description into context. When design work starts, the agent runs `find.sh` to scan every note's one-line `description:`, then opens at most 5 notes.
 
 ```
-_index.md / SKILL.md   entry point and loading rules (the only always-relevant file)
-maps/                  one map per design domain
-concepts/              atomic notes: Rule · Why · Values · Failure · Detect · Implementation
-checklists/            yes/no review passes per domain
-platforms/             per-platform constants (safe areas, touch targets, GuiInset…)
-deploy/ui-designer.md  subagent template to copy into projects
-CLAUDE.md              maintenance instructions (used only when working *on* the vault)
+_index.md        search-first entry point (lookup procedure + task table)
+project-types/   routing per kind of product        → screens/ → components/ → concepts/
+concepts/        atomic notes: Rule · Why · Values · Failure · Detect · Implementation
+maps/            one index per domain and per layer
+checklists/      yes/no review passes per domain
+platforms/       per-platform constants
+deploy/          subagent template to copy into projects
+CLAUDE.md        maintenance instructions (used only when working *on* the vault)
 ```
 
-## Install
-
-### Option A: personal skill (recommended, one install for all projects)
+## Install (personal skill)
 
 ```bash
-# 1. Get the vault
-git clone https://github.com/<your-user>/ui-brain.git ~/vaults/ui-brain
-
-# 2. Register it as a personal skill (Claude Code follows the symlink)
-mkdir -p ~/.claude/skills
-ln -s ~/vaults/ui-brain ~/.claude/skills/ui-brain
+git clone https://github.com/<your-user>/ui-brain.git ~/Documents/vaults/ui-brain
 ```
 
-3. Let Claude read the vault without a permission prompt each time. Add this to `~/.claude/settings.json`:
+The skill is two small files in `~/.claude/skills/ui-brain/` that point at the vault in place:
+- `SKILL.md`: name, description and the lookup procedure, with absolute paths to the vault folders
+- `scripts/find.sh` (executable): `find.sh` lists `path: description` for every note; `find.sh <keywords>` filters by description and aliases. Uses `rg`, falls back to `grep`. Set `UI_BRAIN_VAULT` if the vault lives elsewhere.
+
+They aren't in this repo yet. Copy them from an existing machine, or ask Claude to recreate them from `CLAUDE.md` → *Deployment wiring*.
+
+Let Claude read the vault without prompting. In `~/.claude/settings.json`:
 
 ```json
-{
-  "permissions": {
-    "allow": ["Read(~/vaults/ui-brain/**)"]
-  }
-}
+{ "permissions": { "allow": ["Read(~/Documents/vaults/ui-brain/**)", "Bash(~/.claude/skills/ui-brain/scripts/find.sh:*)"] } }
 ```
 
-4. (Optional) Install the design subagent. It preloads the skill through its `skills:` field:
+Optional design subagent (it preloads the skill):
 
 ```bash
-mkdir -p ~/.claude/agents
-cp ~/vaults/ui-brain/deploy/ui-designer.md ~/.claude/agents/
+mkdir -p ~/.claude/agents && cp ~/Documents/vaults/ui-brain/deploy/ui-designer.md ~/.claude/agents/
 ```
 
-5. (Optional) Make delegation explicit in a project's `CLAUDE.md`:
-
-```markdown
-## Design work
-For any UI design, refinement or design review, delegate to the `ui-designer` subagent
-(or use the `ui-brain` skill directly). Load only the maps and checklists the task needs.
-```
-
-**Check it worked:** in any project, type `/ui` and `ui-brain` should appear in the slash menu. Then ask for a small design review and confirm Claude reads `maps/…` and a few `concepts/…` files, not the whole vault.
-
-### Option B: per-project, shared with a team (git submodule)
-
-The vault lives inside the project, so teammates get it on clone and Claude needs no extra read permissions.
-
-```bash
-git submodule add https://github.com/<your-user>/ui-brain.git .claude/skills/ui-brain
-mkdir -p .claude/agents && cp .claude/skills/ui-brain/deploy/ui-designer.md .claude/agents/
-git commit -m "Add ui-brain design knowledge skill"
-# Teammates: git clone --recurse-submodules …  (or: git submodule update --init)
-```
-
-### Option C: import the index into CLAUDE.md (always loaded)
-
-Add `@~/vaults/ui-brain/_index.md` to a project's `CLAUDE.md` or to `~/.claude/CLAUDE.md`. The one-page index then loads in every session, whether or not the work is design. External imports in a project file trigger a one-time approval dialog. You still need the `Read(...)` allow rule from Option A.
+**Check it:** in a fresh session, run `/context`. Only the skill's name and description should be listed, not its body.
 
 ### Things to avoid
-- **Don't** use `--add-dir` on the vault together with `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`. That loads the vault's *maintenance* `CLAUDE.md` into your project session.
-- **Windows:** git checks symlinks out as plain text unless `core.symlinks` is enabled. If `SKILL.md` breaks, replace it with a copy of `_index.md`.
+- Don't `@`-import vault notes into any `CLAUDE.md`, because that loads them in every session. The skill covers discovery.
+- Don't use `--add-dir` on the vault together with `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`. That loads the vault's *maintenance* `CLAUDE.md` into your project.
+- Don't symlink the vault itself into a `.claude/skills/` folder. The vault no longer has a `SKILL.md`; the skill is the separate folder above.
 
 ## Terms of use (personal subscription)
 
@@ -88,8 +61,7 @@ Sources: [Claude Code legal and compliance](https://code.claude.com/docs/en/lega
 ## Update
 
 ```bash
-cd ~/vaults/ui-brain && git pull          # Option A
-git submodule update --remote .claude/skills/ui-brain   # Option B
+cd ~/Documents/vaults/ui-brain && git pull
 ```
 
 ## Maintain

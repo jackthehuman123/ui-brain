@@ -1,5 +1,6 @@
 ---
 type: screen
+description: "<one line, ≤120 chars: the screen's job and key rules>"
 aliases: []
 project_types: []          # e.g. [ecommerce-site, marketing-site]
 platforms: [all]

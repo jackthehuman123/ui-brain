@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Index of screen notes (homepage, checkout, HUD…): job, section order, rules, review checks"
 domain: screens
 ---
 # Screens

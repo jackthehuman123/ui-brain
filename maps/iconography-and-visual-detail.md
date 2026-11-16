@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Icon weight matching, masked edges, blurred icon swaps, shadows and polish details"
 domain: iconography-and-visual-detail
 ---
 # Iconography and visual detail

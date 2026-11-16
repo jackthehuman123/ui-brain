@@ -1,5 +1,6 @@
 ---
 type: concept
+description: "<one line, ≤120 chars: the rule, not a definition>"
 domain: <one domain>
 aliases: []
 platforms: [all]          # or a subset

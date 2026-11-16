@@ -1,5 +1,6 @@
 ---
 type: project-type
+description: "Storefront routing: homepage, listing, product, cart, checkout; priorities CLS, tabular prices, touch targets, ~8 fields"
 aliases: [online store, storefront, shop, DTC brand site, e-commerce]
 status: draft
 last_verified: 2026-11-16

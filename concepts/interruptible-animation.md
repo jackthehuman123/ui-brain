@@ -1,5 +1,6 @@
 ---
 type: concept
+description: "Retarget animations from the current value and velocity; never restart, queue or lock input; springs for gestures"
 domain: motion
 aliases: [retargeting, interruptible transitions, redirectable animation, animation interruption]
 platforms: [all]

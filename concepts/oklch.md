@@ -1,5 +1,6 @@
 ---
 type: concept
+description: "Author colors in OKLCH: step L at fixed H, sRGB-safe C with a P3 override; still measure contrast on every pair"
 domain: color
 aliases: [OKLCH, oklch(), Oklab, perceptual color space]
 platforms: [all]

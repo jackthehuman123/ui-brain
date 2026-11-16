@@ -1,5 +1,6 @@
 ---
 type: map
+description: "Type scale, tracking, kerning, leading, line length, x-height, numerals, widows, text rendering"
 domain: typography
 ---
 # Typography

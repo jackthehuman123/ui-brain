@@ -1,5 +1,6 @@
 ---
 type: concept
+description: "Use the font's tracking curve; else lowercase ≈0, tighten display slightly, +0.05–0.12em on all caps; store in em"
 domain: typography
 aliases: [letter-spacing, letter spacing, character spacing, cspace]
 platforms: [all]

@@ -1,5 +1,6 @@
 ---
 type: project-type
+description: "<one line, ≤120 chars: what it covers and its priorities>"
 aliases: []
 status: draft
 last_verified: YYYY-MM-DD
