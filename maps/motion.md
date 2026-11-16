@@ -9,3 +9,16 @@ Load with [[checklists/motion|the Motion checklist]]. Open only the notes the ta
 
 ## Concepts
 - [[interruptible-animation]]
+- [[easing]]
+- [[animation-duration]]
+- [[stagger]]
+- [[origin-aware-animation]]
+- [[shared-element-transition]]
+- [[staging]]
+- [[squash-and-stretch]]
+- [[anticipation]]
+- [[follow-through]]
+- [[secondary-action]]
+- [[arcs]]
+
+Also: [[reduced-motion]] (home: accessibility)
