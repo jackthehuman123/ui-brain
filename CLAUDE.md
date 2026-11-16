@@ -7,13 +7,26 @@ Content that improves output beyond model defaults: actionable rules, thresholds
 
 ## Structure
 - `concepts/`: one atomic note per concept, flat, kebab-case filenames, built from `_template.md`.
-- `maps/<domain>.md`: one map of content per domain. Every concept appears in exactly one map (its `domain`).
+- `maps/<domain>.md`: one map of content per domain. Every concept appears in its home map (its `domain`) and may also be listed in other maps where it applies (e.g. `touch-target` in accessibility too).
 - `checklists/<domain>.md`: yes/no review checks; each item links to its concept note.
 - `platforms/<platform>.md`: web, ios, android, desktop, roblox, unity constants. **Constants live only here**; concept notes link to them.
 - `inbox/`: candidates (`candidates.md`) and drafts awaiting the owner's review.
 - `sources.md`: ranked trusted sources.
 
 Domains (frontmatter `domain:` values = map filenames): `typography`, `color`, `layout-and-spacing`, `motion`, `interaction-and-state`, `components`, `iconography-and-visual-detail`, `platform-and-environment`, `accessibility`.
+
+## Deployment wiring (don't break)
+- The vault root is a Claude Code skill. `SKILL.md` is a symlink to `_index.md`, so `_index.md`'s frontmatter `name` and `description` are the skill's trigger. Keep the description in the third person and under 1,024 characters, and say *what* the skill covers and *when* to use it.
+- `deploy/ui-designer.md` is the subagent template other projects copy. Update it if the loading rules in `_index.md` change.
+- Agents resolve `[[name]]` to `concepts/name.md`. Keep `concepts/` flat and filenames unique.
+- See `README.md` for install paths.
+
+## Writing rules (from Anthropic's skill-authoring guidance)
+- Assume the reader is already a strong model: no definitions or background it already knows. Every line has to earn its tokens.
+- Keep each note under ~100 lines; agents may preview long files partially.
+- Use one term per concept across the whole vault (match the note filename and aliases).
+- No time-relative phrasing ("currently", "recently", "new in"). Use dates and `last_verified`.
+- Give one default, not a menu: "use X; for case Y use Z".
 
 ## Quality rules (every note, every time)
 - **Sources:** platform guidelines (Apple HIG, Material 3, Fluent, Roblox Creator Docs) > specs (W3C/CSSWG, WCAG 2.2, MDN) > recognized practitioners. Check every number with web search. List sources in `sources:` frontmatter, and attribute each value inline, e.g. *(M3 tokens)*.
