@@ -21,3 +21,12 @@ sources:
 | Label Small | 11 | +0.045 | +0.5 |
 
 Used by [[tracking]].
+
+## Touch target
+Minimum **48×48 dp**. *(Material)*
+
+## Insets / edge-to-edge
+Apps targeting **SDK 35 (Android 15)** are drawn edge-to-edge by default. Call `enableEdgeToEdge()` and pad with `WindowInsets.safeDrawing` (or Scaffold padding values). The theme opt-out stops working at targetSdk 36 (third-party reports).
+
+## Dark mode
+M3 tonal surfaces: `surfaceContainerLowest`, `Low`, the default, `High`, `Highest`. These replace M2's elevation overlays (white at about 5% for 1dp up to 16% for 24dp).

@@ -29,3 +29,12 @@ sources:
 | 80 | 0 | 0 |
 
 macOS uses a separate table (e.g. 10pt +12, 13pt −6, 26pt +8). System text styles apply these automatically; use the table only for custom styles built on SF. Used by [[tracking]].
+
+## Touch target
+Minimum hit area **44×44 pt** for all controls. *(Apple HIG)*
+
+## Safe area
+SwiftUI and UIKit layouts respect safe areas by default. Use `.ignoresSafeArea()` on backgrounds only. Insets vary by device and orientation; read them from `GeometryProxy.safeAreaInsets` / `view.safeAreaInsets`, never hardcode them.
+
+## Dark mode
+Two background sets: **base** (dimmer) and **elevated** (brighter, used automatically for popovers and sheets). Use semantic colors (`systemBackground`, `secondarySystemBackground`).

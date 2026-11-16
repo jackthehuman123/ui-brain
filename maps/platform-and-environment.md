@@ -8,4 +8,7 @@ domain: platform-and-environment
 Load with [[checklists/platform-and-environment|the Platform and environment checklist]]. Open only the notes the task touches.
 
 ## Concepts
-_None yet._
+- [[safe-area]]
+- [[dynamic-viewport]]
+
+Constants: [[platforms/web]] · [[platforms/ios]] · [[platforms/android]] · [[platforms/roblox]] · [[platforms/unity]]

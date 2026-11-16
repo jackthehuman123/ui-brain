@@ -8,4 +8,8 @@ domain: layout-and-spacing
 Load with [[checklists/layout-and-spacing|the Layout and spacing checklist]]. Open only the notes the task touches.
 
 ## Concepts
-_None yet._
+- [[layout-shift]]
+- [[optical-center]]
+- [[concentric-radius]]
+
+Also: [[safe-area]] · [[dynamic-viewport]] (home: platform-and-environment)
