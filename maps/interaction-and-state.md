@@ -18,5 +18,6 @@ Load with [[checklists/interaction-and-state|the Interaction and state checklist
 - [[postels-law]]
 - [[jakobs-law]]
 - [[frequency-of-use]]
+- [[aesthetic-usability-effect]]
 
 Also: [[touch-target]] (home: accessibility)

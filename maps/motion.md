@@ -20,5 +20,6 @@ Load with [[checklists/motion|the Motion checklist]]. Open only the notes the ta
 - [[follow-through]]
 - [[secondary-action]]
 - [[arcs]]
+- [[pose-to-pose]]
 
 Also: [[reduced-motion]] (home: accessibility)
