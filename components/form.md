@@ -52,4 +52,4 @@ sources:
 - [ ] Mobile web inputs are ≥ 16px
 - [ ] No field asks for data already given or derivable
 
-**Related:** [[combobox]] · [[progressive-disclosure]] · [[optimistic-update]] · [[touch-target]] · [[affordance]]
+**Related:** [[components/combobox]] · [[progressive-disclosure]] · [[optimistic-update]] · [[touch-target]] · [[affordance]]
