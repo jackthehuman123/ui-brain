@@ -16,7 +16,7 @@ sources:
 
 **Typical screens:** [[screens/homepage]] · category listing · product detail · cart · checkout · account / order status · search results (screens other than homepage are not yet written)
 
-**Core components:** [[components/form]] · product card · navigation bar / mega-menu · filter and sort · image gallery · size selector · button · toast. Written: [[components/form]], [[components/combobox]] (search)
+**Core components:** [[components/button]] · [[components/card]] (product) · [[components/navigation-bar]] · [[components/form]] · [[components/combobox]] (search) · [[components/select]] / [[components/radio]] (size, variant) · [[components/badge]] (cart count) · [[components/toast]] (added to cart + undo) · [[components/modal]] · filter and sort · image gallery (planned)
 
 **Priority concepts:**
 - [[layout-shift]]: images and prices loading late are the main source of CLS on product grids

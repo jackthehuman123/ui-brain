@@ -24,7 +24,7 @@ sources:
 
 **Failure looks like:** 16px icon buttons with 16px hit areas. Close "×" glyphs that need two tries. Inline chips with 4px gaps. A Roblox mobile HUD with desktop-sized buttons.
 
-**Detect in review:** Outline the computed hit areas (`button, a, [role=button]`) at 390px and measure the smallest. In code: icon buttons without padding or a min-size; `Modifier.minimumInteractiveComponentSize` disabled; Roblox buttons sized in Offset pixels.
+**Detect in review:** Outline the computed hit areas (`button, a, [role=button]`) at 390px and measure the smallest. Measure the *declared* hit area (the stretched-link card, the label around a checkbox), not the element's own box. In code: icon buttons without padding or a min-size; `Modifier.minimumInteractiveComponentSize` disabled; Roblox buttons sized in Offset pixels.
 
 **Implementation:**
 - Web: `.icon-btn{min-width:44px;min-height:44px;display:grid;place-items:center}`

@@ -20,3 +20,6 @@ button · text-field · select · checkbox · radio · switch · tabs · navigat
 - `toast-timing`: queue one at a time; auto-dismiss ~5 s, ~10 s with an action; pause on hover and focus; Undo over confirm.
 - `hidden-attribute-pitfall` (or part of `review-tooling`): author `display` rules override `[hidden]`. Add a global `[hidden]{display:none!important}`.
 - `review-tooling` (already a candidate): add overlap detection, the contact-sheet visual pass, and virtual-time transitions.
+
+## Status 2026-11-16
+Applied: multiply-blending (immediate surface, not theme), reduced-motion (rotation/scale + `--dur-move` token), interruptible-animation (virtual-time caveat), touch-target (declared hit areas). Component notes written for all 16 tested components. Still open: `focus-visible`, `toast-timing` details beyond components/toast, `review-tooling`.

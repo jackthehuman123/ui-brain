@@ -27,7 +27,7 @@ sources:
 
 Order after section 1: **unverified**, common practice. Test it against your analytics.
 
-**Components:** [[components/form]] (newsletter) · card · navigation bar · button (component notes planned; see `maps/components.md`)
+**Components:** [[components/button]] · [[components/card]] · [[components/navigation-bar]] · [[components/form]] (newsletter)
 
 **Rules:**
 - Spend the best content on the first two screens, because attention falls sharply after the fold. *(NN/g)*

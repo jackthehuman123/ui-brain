@@ -29,7 +29,7 @@ sources:
 **Failure looks like:** A re-clicked toggle snaps back and replays. Ignored taps while a menu opens. Hover fades queue up. A panel jumps 3–4px on reversal because padding toggled instantly (ayxc test).
 
 **Detect in review:** `@keyframes` driving open/close; `if (isAnimating) return`; `pointer-events:none` during transitions; any property that changes with the state class but isn't in `transition`.
-- Test: pause the transition via `el.getAnimations()` → `currentTime = 120`, trigger the opposite state, then assert the start value equals the paused value and the duration is shorter (`ui-test/tools/interrupt-test.html`).
+- Test: pause the transition via `el.getAnimations()` → `currentTime = 120`, trigger the opposite state, then assert the start value equals the paused value and the duration is shorter (`ui-test/tools/interrupt-test.html`). Headless virtual time never advances transitions, so call `finish()` before asserting end states.
 
 **Implementation:**
 - Web: `transition` for two-state UI; the Web Animations API or a spring library for gestures.
