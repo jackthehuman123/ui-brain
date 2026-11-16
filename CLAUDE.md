@@ -6,14 +6,20 @@ This is an Obsidian vault of UI design knowledge loaded by design subagents. `_i
 Content that improves output beyond model defaults: actionable rules, thresholds, concrete values, failure patterns and how to detect them. **Not** definitions, tutorials or copied docs. A note that only explains what something *is* has failed.
 
 ## Structure
-- `concepts/`: one atomic note per concept, flat, kebab-case filenames, built from `_template.md`.
+- **Three layers, narrow → specific:**
+  - `project-types/`: routing per kind of product (`_template-project-type.md`)
+  - `screens/`: one note per screen type (`_template-screen.md`)
+  - `components/`: one note per component (`_template-component.md`)
+  - `concepts/`: one atomic note per concept, flat, kebab-case (`_template.md`). This is the layer the other three link down into.
+- **Layering rule:** a screen or component note states each rule in one line and links to the concept that holds the reasoning and general values. Values specific to the component or screen (e.g. checkout field count) live in that note. Never copy a concept's Values block upward.
+- Indexes: `maps/project-types.md`, `maps/screens.md`, `maps/components.md`, plus one map per concept domain.
 - `maps/<domain>.md`: one map of content per domain. Every concept appears in its home map (its `domain`) and may also be listed in other maps where it applies (e.g. `touch-target` in accessibility too).
 - `checklists/<domain>.md`: yes/no review checks; each item links to its concept note.
 - `platforms/<platform>.md`: web, ios, android, desktop, roblox, unity constants. **Constants live only here**; concept notes link to them.
 - `inbox/`: candidates (`candidates.md`) and drafts awaiting the owner's review.
 - `sources.md`: ranked trusted sources.
 
-Domains (frontmatter `domain:` values = map filenames): `typography`, `color`, `layout-and-spacing`, `motion`, `interaction-and-state`, `components`, `iconography-and-visual-detail`, `platform-and-environment`, `accessibility`.
+Concept domains (frontmatter `domain:` values = map filenames): `typography`, `color`, `layout-and-spacing`, `motion`, `interaction-and-state`, `iconography-and-visual-detail`, `platform-and-environment`, `accessibility`. Component-level concepts (e.g. `combobox`) become `components/` notes. `maps/components.md` indexes that folder.
 
 ## Deployment wiring (don't break)
 - The vault root is a Claude Code skill. `SKILL.md` is a symlink to `_index.md`, so `_index.md`'s frontmatter `name` and `description` are the skill's trigger. Keep the description in the third person and under 1,024 characters, and say *what* the skill covers and *when* to use it.
@@ -38,7 +44,7 @@ Domains (frontmatter `domain:` values = map filenames): `typography`, `color`, `
 - **Commit** after each batch; the message lists the notes added or changed.
 
 ## Maintenance commands
-- **`add <term(s)>`**: Check `aliases` and filenames for an existing note first (`grep -ril "<term>" concepts/`). If one exists, extend it. Otherwise research, write from `_template.md`, link into its map and related notes, and add a checklist item if it adds a reviewable check. Report what changed.
+- **`add <term(s)>`**: First decide the layer: project type, screen, component or concept. Check `aliases` and filenames for an existing note (`grep -ril "<term>" concepts components screens project-types`). If one exists, extend it. Otherwise research, write from that layer's template, link into its map and related notes, and add a checklist item if it adds a reviewable check. Report what changed.
 - **`expand <note>`**: Add values, platform implementations or failure examples. Re-verify the sources and bump `last_verified`.
 - **`harvest`**: Run at the end of a design session in another repo. Look at what the design subagent struggled with or was corrected on, and propose new concepts or rule changes as files in `inbox/`. **Don't edit concept notes directly.**
 - **`gaps <domain>`**: Propose missing concepts for the domain in `inbox/candidates.md` (one line each on why it earns a note). Don't write them.
