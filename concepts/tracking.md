@@ -1,6 +1,6 @@
 ---
 type: concept
-description: "Use the font's tracking curve; else lowercase ≈0, tighten display slightly, +0.05–0.12em on all caps; store in em"
+description: "Use the font's tracking curve; else lowercase ≈0, tighten display slightly, +0.05–0.12em on caps letters; store in em"
 domain: typography
 aliases: [letter-spacing, letter spacing, character spacing, cspace]
 platforms: [all]
@@ -8,38 +8,33 @@ status: draft
 last_verified: 2026-11-16
 sources:
   - https://developer.apple.com/design/human-interface-guidelines/typography
-  - https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/typography/res/values/tokens.xml
   - https://d.rsms.me/inter-website/v3/dynmetrics/
   - https://practicaltypography.com/letterspacing.html
   - https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html
   - https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.2/manual/RichTextCharacterSpacing.html
-  - https://devforum.roblox.com/t/ability-to-set-thickness-of-text-strokes-letter-spacing-on-textlabels-textbuttons/34423
 ---
 # Tracking
 
-**Rule:** Tracking is a curve over font size, specific to each font. Use the font's published curve if it has one (SF, Inter, M3 tokens). If not, keep lowercase near 0, tighten large display text slightly, and always add 0.05–0.12em to all caps. Store it in `em` alongside each type-scale step, never as one global value.
+**Rule:** Tracking is a per-font curve over size. Use the font's published curve (SF, Inter, M3). Otherwise: lowercase ≈ 0, large display slightly tighter, all-caps **letter strings** +0.05–0.12em. Store it in `em` per type-scale step.
 
-**Why:** Fonts are spaced for one size range. Outside it, gaps look loose at large sizes and letters crowd at small sizes. All caps have no ascenders or descenders to separate letter shapes, so they need extra space.
+**Why:** Fonts are spaced for one size range. Caps lack ascenders and descenders, so their shapes merge without extra space.
 
 **Values:**
-- **SF Pro (iOS), pt → 1/1000 em:** 11 → +6 · 15 → −16 · 17 → **−26** · 20 → −23 · 24 → +3 · 28 → +14 · 34 → **+12** · 48 → +8 · 80 → 0. *(Apple HIG tracking table)* SF loosens again above ~24pt, so "tighten big text" is **wrong for SF**. macOS uses a separate table. The full tables will go in `platforms/ios.md`.
-- **Inter:** `tracking = −0.0223 + 0.185·e^(−0.1745·size)`, which gives 12 → 0.000 · 16 → −0.011 · 24 → −0.020 · ≥32 → −0.022. *(rsms Inter dynamic metrics)* Units aren't stated; em-per-px is assumed (**unverified**).
-- **Material 3 (sp → em):** Display Large 57 → −0.004 · Title Large → 0 · Body Large 16 → +0.031 · Label Large 14 → +0.007 · Label Small 11 → +0.045. *(M3 tokens)*
-- **All caps / small caps:** +5–12%, i.e. `0.05–0.12em`, which matters most at small sizes. Lowercase normally needs no tracking. *(Butterick)*
-- **Accessibility floor:** the layout must survive a user override of `letter-spacing: 0.12em` with nothing clipped. *(WCAG 2.2 SC 1.4.12)*
+- SF Pro and M3 curves: [[platforms/ios]], [[platforms/android]]. SF *loosens* above ~24pt, so "tighten big text" is wrong for SF. *(Apple HIG)*
+- Inter: `−0.0223 + 0.185·e^(−0.1745·px)` → 16px −0.011em, ≥32px −0.022em. *(rsms; units assumed em/px, **unverified**)*
+- Caps and small caps: 0.05–0.12em *(Butterick)*. Large all-caps display: low end, **unverified** 0.02–0.05em (the caps and display rules pull opposite ways).
+- Don't track numerals or symbols as if they were caps ("−17%" reads as separate tokens).
+- The layout must survive `letter-spacing: 0.12em` *(WCAG 2.2 SC 1.4.12)*.
 
-**Failure looks like:** A display headline with visible gaps between letters (or SF headings squeezed tight by hand-copied negative values). All-caps buttons with letters touching ("RN" reads as "M"). Body text tracked negatively. A px value that only looks right at one size.
+**Failure looks like:** Gappy display headlines. Caps labels with touching letters ("RN" reads as "M"). Negatively tracked body text. A px value that's only right at one size.
 
-**Detect in review:**
-- Code: `letter-spacing` in px. One value shared by headings and body. `uppercase` without positive tracking. Negative tracking under ~14px. `.tracking()` on the system font. `!important` on letter-spacing (blocks the 1.4.12 override).
-- Screenshot: in display text, gaps between letters wider than the counters. In caps labels, stems nearly touching.
-- Accessibility check: inject `*{letter-spacing:.12em!important}` and look for truncation.
+**Detect in review:** `letter-spacing` in px. One value for headings and body. `uppercase` without tracking. Negative tracking under 14px. `.tracking()` on SF. `!important` on letter-spacing. Inject `*{letter-spacing:.12em!important}` and look for clipping.
 
 **Implementation:**
-- Web: put a tracking token on each step: `--display-tracking: -0.022em; .caps{text-transform:uppercase;letter-spacing:.08em}`.
-- iOS: use text styles (`.font(.title)`); SF applies the HIG curve itself. For custom fonts, `.tracking(_:)` takes **points**, so use em × current size.
-- Android (Compose): `letterSpacing = 0.03.em` (prefer em over sp).
-- Unity (TMP): in the Inspector, Character Spacing 1 = 0.01em. Rich text `<cspace=0.05em>` uses real em.
-- Roblox: no tracking property exists. Choose a font whose default spacing fits the size.
+- Web: `--display-tracking: -0.022em; .caps{letter-spacing:.08em}`
+- iOS: text styles apply SF tracking. `.tracking()` is in **points**, so use em × size.
+- Android: `letterSpacing = 0.03.em`
+- Unity TMP: Inspector 1 = 0.01em. `<cspace=0.05em>` is real em.
+- Roblox: no tracking property. Pick a font spaced for the size.
 
-**Related:** [[kerning]] · [[leading]] · [[x-height]] · [[line-length]] · [[tabular-numbers]]
+**Related:** [[kerning]] · [[leading]] · [[x-height]] · [[tabular-numbers]]

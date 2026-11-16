@@ -9,3 +9,12 @@ Load with [[checklists/typography|the Typography checklist]]. Open only the note
 
 ## Concepts
 - [[tracking]]
+- [[kerning]]
+- [[leading]]
+- [[x-height]]
+- [[line-length]]
+- [[widow]]
+- [[tabular-numbers]]
+- [[font-loading]]
+
+Constants: [[platforms/ios]] (SF tracking table) · [[platforms/android]] (M3 tracking tokens)
